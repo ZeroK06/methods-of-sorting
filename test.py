@@ -16,7 +16,7 @@ import os
 
 
 def generateTxt():
-    for i in range(5):
+    for i in range(8):
         currentFile = open('data/{}_a.txt'.format(2**(i+1)*100), 'w')
         currentArr = randomArr.randomArr(2**(i+1)*100)
         currentFile.write(json.dumps(currentArr))
@@ -44,21 +44,53 @@ def test(*methods, numData=1):
 
     for i in range(len(methods)):
         currentResult = []
-        prom = 0
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/200_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/400_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/800_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/1600_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/3200_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/6400_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/12800_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+        firstTime = time() * 1000
+        res = methods[i](json.loads(open('data/25600_a.txt', 'r').read()))
+        lastTime = time() * 1000
+        currentResult.append(lastTime - firstTime)
+
         print(resultMethods[index]["name"])
-        for path in os.listdir('data'):
+        """ for path in os.listdir('data'):
+            prom = 0
             if os.path.isfile(os.path.join('data', path)):
                 currentArr = json.loads(open('data/'+path, 'r').read())
-                print(path)
-                firstTime = time()
+                firstTime = time() * 1000
                 res = methods[i](currentArr)
-                lastTime = time()
-                currentFile = open('data/'+path, 'w')
-                currentFile.write(str(res))
-                currentFile.close()
+                lastTime = time() * 1000
+                 currentFile = open('data/'+path, 'w')
+        currentFile.write(str(res))
+        currentFile.close() 
                 prom += lastTime - firstTime
                 currentResult.append(prom)
-
+        print(currentResult) """
         print(currentResult)
         index = index+1
     return result
