@@ -5,18 +5,20 @@ from src import selectionSort
 from src import bubbleSort
 from src import quickSort
 from src import heapSort
+from src import shellSort
 from services import randomArr
 from time import time
 from random import randint
 import json
 import os
+import datetime
 #
 # Generador de archivo para test
 #
 
 
 def generateTxt():
-    for i in range(8):
+    for i in range(10):
         currentFile = open('data/{}_a.txt'.format(2**(i+1)*100), 'w')
         currentArr = randomArr.randomArr(2**(i+1)*100)
         currentFile.write(json.dumps(currentArr))
@@ -44,38 +46,44 @@ def test(*methods, numData=1):
 
     for i in range(len(methods)):
         currentResult = []
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/200_a.txt', 'r').read()))
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/200_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/400_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/800_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/1600_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/3200_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/6400_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/12800_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/25600_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        """ res = methods[i](json.loads(open('data/51200_a.txt', 'r').read()))
         lastTime = time() * 1000
         currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/400_a.txt', 'r').read()))
+        res = methods[i](json.loads(open('data/102400_a.txt', 'r').read()))
         lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/800_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/1600_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/3200_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/6400_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/12800_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        firstTime = time() * 1000
-        res = methods[i](json.loads(open('data/25600_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
+        currentResult.append(lastTime - firstTime) """
 
         print(resultMethods[index]["name"])
         """ for path in os.listdir('data'):
@@ -96,5 +104,5 @@ def test(*methods, numData=1):
     return result
 
 
-print(test(buckertSort, insertionSort, selectionSort,
-      bubbleSort, quickSort, heapSort, numData=500))
+print(test(bubbleSort, buckertSort, heapSort, insertionSort, quickSort, selectionSort,
+      shellSort, numData=500))
