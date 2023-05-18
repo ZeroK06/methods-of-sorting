@@ -78,27 +78,16 @@ def test(*methods, numData=1):
         methods[i](json.loads(open('data/25600_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
         currentResult.append((lastTime - firstTime).total_seconds() * 1000)
-        """ res = methods[i](json.loads(open('data/51200_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime)
-        res = methods[i](json.loads(open('data/102400_a.txt', 'r').read()))
-        lastTime = time() * 1000
-        currentResult.append(lastTime - firstTime) """
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/51200_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        firstTime = datetime.datetime.now()
+        methods[i](json.loads(open('data/102400_a.txt', 'r').read()))
+        lastTime = datetime.datetime.now()
+        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
 
         print(resultMethods[index]["name"])
-        """ for path in os.listdir('data'):
-            prom = 0
-            if os.path.isfile(os.path.join('data', path)):
-                currentArr = json.loads(open('data/'+path, 'r').read())
-                firstTime = time() * 1000
-                res = methods[i](currentArr)
-                lastTime = time() * 1000
-                 currentFile = open('data/'+path, 'w')
-        currentFile.write(str(res))
-        currentFile.close() 
-                prom += lastTime - firstTime
-                currentResult.append(prom)
-        print(currentResult) """
         print(currentResult)
         index = index+1
     return result
