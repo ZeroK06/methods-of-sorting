@@ -39,7 +39,7 @@ print(res)
 
 
 def test(*methods, numData=1):
-
+    plot = '\/addplot[color=red,mark=square] coordinates {/ {}/}  \/legend{/ {} }/;'
     arr = randomArr.randomArr(numData)
     result = []
     index = 0
@@ -49,46 +49,52 @@ def test(*methods, numData=1):
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/200_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/400_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/800_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/1600_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/3200_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/6400_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/12800_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/25600_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
-        methods[i](json.loads(open('data/51200_a.txt', 'r').read()))
+        """ methods[i](json.loads(open('data/51200_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds())
         firstTime = datetime.datetime.now()
         methods[i](json.loads(open('data/102400_a.txt', 'r').read()))
         lastTime = datetime.datetime.now()
-        currentResult.append((lastTime - firstTime).total_seconds() * 1000)
+        currentResult.append((lastTime - firstTime).total_seconds()) """
 
         print(resultMethods[index]["name"])
-        print(currentResult)
+        coordinates = ''
+        for i in range(len(currentResult)):
+            coordinates = coordinates + \
+                '({},{})'.format(2**(i+1)*100, currentResult[i])
+        print(plot.format(coordinates, resultMethods[index]["name"]))
+        response = open('plots.txt', 'w')
+        response.write(s)
         index = index+1
     return result
 
