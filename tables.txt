@@ -1,0 +1,105 @@
+\\\\
+\subsection{Resultados del metodo bubbleSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.002969 \\ 
+ 400 & 0.00758 \\ 
+ 800 & 0.032082 \\ 
+ 1600 & 0.139384 \\ 
+ 3200 & 0.570332 \\ 
+ 6400 & 2.172265 \\ 
+ 12800 & 9.063841 \\ 
+ 25600 & 34.707549 \\ 
+ 51200 & 138.645794 \\ 
+ 102400 & 628.999484 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo buckertSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.0 \\ 
+ 400 & 0.0 \\ 
+ 800 & 0.0 \\ 
+ 1600 & 0.000999 \\ 
+ 3200 & 0.0 \\ 
+ 6400 & 0.002 \\ 
+ 12800 & 0.003513 \\ 
+ 25600 & 0.005004 \\ 
+ 51200 & 0.012022 \\ 
+ 102400 & 0.026317 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo heapSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.001 \\ 
+ 400 & 0.000998 \\ 
+ 800 & 0.001998 \\ 
+ 1600 & 0.005515 \\ 
+ 3200 & 0.012507 \\ 
+ 6400 & 0.027252 \\ 
+ 12800 & 0.05988 \\ 
+ 25600 & 0.131083 \\ 
+ 51200 & 0.284406 \\ 
+ 102400 & 0.628058 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo insertSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.001504 \\ 
+ 400 & 0.003006 \\ 
+ 800 & 0.017024 \\ 
+ 1600 & 0.062039 \\ 
+ 3200 & 0.264309 \\ 
+ 6400 & 1.023198 \\ 
+ 12800 & 4.121743 \\ 
+ 25600 & 17.065777 \\ 
+ 51200 & 66.791778 \\ 
+ 102400 & 266.658384 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo quickSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.001005 \\ 
+ 400 & 0.0 \\ 
+ 800 & 0.001996 \\ 
+ 1600 & 0.000999 \\ 
+ 3200 & 0.003059 \\ 
+ 6400 & 0.003999 \\ 
+ 12800 & 0.010064 \\ 
+ 25600 & 0.022024 \\ 
+ 51200 & 0.039623 \\ 
+ 102400 & 0.075982 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo selectionSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.002003 \\ 
+ 400 & 0.003505 \\ 
+ 800 & 0.018801 \\ 
+ 1600 & 0.06284 \\ 
+ 3200 & 0.261469 \\ 
+ 6400 & 1.041856 \\ 
+ 12800 & 3.953812 \\ 
+ 25600 & 15.913664 \\ 
+ 51200 & 65.027395 \\ 
+ 102400 & 244.45676 \\
+\end{tabular}
+\\\\
+\subsection{Resultados del metodo shellSort}
+\begin{tabular}{| c | c |} 
+ Cant. Datos & Tiempo (s) \\ \hline 
+ 200 & 0.0 \\ 
+ 400 & 0.001006 \\ 
+ 800 & 0.001994 \\ 
+ 1600 & 0.003004 \\ 
+ 3200 & 0.008336 \\ 
+ 6400 & 0.024471 \\ 
+ 12800 & 0.056066 \\ 
+ 25600 & 0.118504 \\ 
+ 51200 & 0.286247 \\ 
+ 102400 & 0.764386 \\
+\end{tabular}

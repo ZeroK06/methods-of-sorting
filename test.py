@@ -14,8 +14,8 @@ import json
 import os
 import datetime
 
-colors = ["black", "blue", "brown", "cyan", "darkgray", "gray", "green", "lightgray",
-          "lime", "magenta", "olive", "orange", "pink", "purple", "red", "teal", "violet", "yellow"]
+colors = ["black", "blue", "brown", "green", "magenta",
+          "orange", "purple", "red", "violet", "yellow"]
 
 #
 # Generador de archivo para test
@@ -36,6 +36,7 @@ print(res)
 
 def test(*methods, numData=1):
     plots = ""
+    tables = ""
     arr = randomArr.randomArr(numData)
     result = []
     index = 0
@@ -85,16 +86,29 @@ def test(*methods, numData=1):
 
         print(resultMethods[index]["name"])
         coordinates = ''
+        rows = ''
         for i in range(len(currentResult)):
             coordinates = coordinates + \
                 '({},{})'.format(2**(i+1)*100, currentResult[i])
-        plot = "\\addplot[color="+colors[randint(0, len(colors)-1)]+",mark=square] \n coordinates {" + \
+        plot = "\\addplot[color="+colors[i]+",mark=square,line width=2pt] \n coordinates {" + \
             coordinates + "}; \n \\addlegendentry{" + \
             resultMethods[index]["name"] + "}\n"
+        for i in range(len(currentResult)):
+            rows = rows + \
+                " \n {} & {} \\\\".format(2**(i+1)*100, currentResult[i])
+        table = "\n\subsection{Resultados del metodo " + resultMethods[index]["name"] + "}\n"+"\\begin{" + \
+            "tabular}{| c | c |} \n Cant. Datos & Tiempo (s) \\\\ \hline" + \
+            rows + "\n\end{"+"tabular}\n"
+        tables = tables + "\\\\\\\\" + table
         plots = plots+plot
         index = index+1
     response = open('plots.txt', 'w')
     response.write(plots)
+    response.close()
+    print(str(tables))
+    tablestxt = open('tables.txt', 'w')
+    tablestxt.write(str(tables))
+    tablestxt.close()
     return result
 
 
