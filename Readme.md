@@ -19,4 +19,13 @@
 ### Como realizar el test?
 
 Una vez clonado el repositorio ingrese la siguiente linea de comandos en consola
-`py .\test.py`
+
+```bash
+# Primero clona el repositorio
+    $ git clone https://github.com/ZeroK06/methods-of-sorting.git
+# Ejecuta el archivo de test
+    $ py .\test.py
+
+```
+
+# Gracias 💚💚
