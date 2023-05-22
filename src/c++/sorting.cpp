@@ -7,7 +7,8 @@
 #include <string>
 using namespace std;
 unsigned t0, t1;
-//Selection sort function
+
+
 void selectionSort(int dizi[], int elemanSayisi) {
     int i, j, enKucuk, temp;
     for (i = 0; i < elemanSayisi - 1; i++) {
@@ -20,12 +21,7 @@ void selectionSort(int dizi[], int elemanSayisi) {
         dizi[i] = dizi[enKucuk];
         dizi[enKucuk] = temp;
     }
-    /*for (int k = 0; k < elemanSayisi; ++k) {
-        cout << dizi[k] << " ";
-    }*/
 }
-
-//Insertion sort function
 void insertionSort(int dizi[], int elemanSayisi) {
     int i, j, temp;
     for (i = 1; i < elemanSayisi; i++) {
@@ -38,8 +34,6 @@ void insertionSort(int dizi[], int elemanSayisi) {
         }
     }
 }
-
-//Bubble sort function
 void bubbleSort(int dizi[], int elemanSayisi) {
     int temp;
     int i, j;
@@ -54,8 +48,6 @@ void bubbleSort(int dizi[], int elemanSayisi) {
         }
     }
 }
-
-//Shell sort function
 void shellSort(int dizi[], int elemanSayisi) {
     int j;
     for (int gap = elemanSayisi / 2; gap > 0; gap /= 2) {
@@ -69,70 +61,52 @@ void shellSort(int dizi[], int elemanSayisi) {
     }
 }
 
-//Merge sort functions
-void merge(int arr[], int l, int m, int r) {
-    int i, j, k;
-    int n1 = m - l + 1;
-    int n2 = r - m;
-
-    /* create temp arrays */
-    int L[n1], R[n2];
-
-    /* Copy data to temp arrays L[] and R[] */
-    for (i = 0; i < n1; i++)
-        L[i] = arr[l + i];
-    for (j = 0; j < n2; j++)
-        R[j] = arr[m + 1 + j];
-
-    /* Merge the temp arrays back into arr[l..r]*/
-    i = 0;
-    j = 0;
-    k = l;
-    while (i < n1 && j < n2) {
-        if (L[i] <= R[j]) {
-            arr[k] = L[i];
-            i++;
-        }
-        else {
-            arr[k] = R[j];
-            j++;
-        }
-        k++;
+void merge(int arr[], int p, int q, int r) {
+  int n1 = q - p + 1;
+  int n2 = r - q;
+  int L[n1], M[n2];
+  for (int i = 0; i < n1; i++)
+    L[i] = arr[p + i];
+  for (int j = 0; j < n2; j++)
+    M[j] = arr[q + 1 + j];
+  int i, j, k;
+  i = 0;
+  j = 0;
+  k = p;
+  while (i < n1 && j < n2) {
+    if (L[i] <= M[j]) {
+      arr[k] = L[i];
+      i++;
+    } else {
+      arr[k] = M[j];
+      j++;
     }
-
-    /* Copy the remaining elements of L[], if there are any */
-    while (i < n1) {
-        arr[k] = L[i];
-        i++;
-        k++;
-    }
-
-    /* Copy the remaining elements of R[], if there are any */
-    while (j < n2) {
-        arr[k] = R[j];
-        j++;
-        k++;
-    }
+    k++;
+  }
+  while (i < n1) {
+    arr[k] = L[i];
+    i++;
+    k++;
+  }
+  while (j < n2) {
+    arr[k] = M[j];
+    j++;
+    k++;
+  }
+}
+void mergeSort(int arr[], int l, int r) {
+  if (l < r) {
+    int m = l + (r - l) / 2;
+    mergeSort(arr, l, m);
+    mergeSort(arr, m + 1, r);
+    merge(arr, l, m, r);
+  }
 }
 
-/* l is for left index and r is right index of the sub-array
-  of arr to be sorted */
-void mergeSort(int dizi[], int l, int r) {
-    if (l < r) {
-        int m = l + (r - l) / 2; //Same as (l+r)/2, but avoids overflow for large l and h
-        mergeSort(dizi, l, m);
-        mergeSort(dizi, m + 1, r);
-        merge(dizi, l, m, r);
-    }
-}
-
-//Quick sort function
 void quickSort(int arr[], int left, int right) {
     int i = left, j = right;
     int tmp;
     int pivot = arr[(left + right) / 2];
-
-    /* partition */
     while (i <= j) {
         while (arr[i] < pivot)
             i++;
@@ -146,15 +120,11 @@ void quickSort(int arr[], int left, int right) {
             j--;
         }
     };
-
-    /* recursion */
     if (left < j)
         quickSort(arr, left, j);
     if (i < right)
         quickSort(arr, i, right);
 }
-
-//Heap sort function
 void swap(int a[], int *g, int *b) {
     int temp;
     temp = a[*g];
@@ -249,6 +219,33 @@ void BucketSort(int* data, int count) {
 		}
 	}
 }
+void countSort1(int array[], int size) {
+  int output[10];
+  int count[10];
+  int max = array[0];
+  for (int i = 1; i < size; i++) {
+    if (array[i] > max)
+      max = array[i];
+  }
+  for (int i = 0; i <= max; ++i) {
+    count[i] = 0;
+  }
+  for (int i = 0; i < size; i++) {
+    count[array[i]]++;
+  }
+  for (int i = 1; i <= max; i++) {
+    count[i] += count[i - 1];
+  }
+  for (int i = size - 1; i >= 0; i--) {
+    output[count[array[i]] - 1] = array[i];
+    count[array[i]]--;
+  }
+  for (int i = 0; i < size; i++) {
+    array[i] = output[i];
+  }
+}
+
+
 
 int main() {
     //Create Dummy Array!!!
@@ -260,6 +257,8 @@ int main() {
     string method5 = "";
     string method6 = "";
     string method7 = "";
+    string method8 = "";
+    string method9 = "";
     for(int l=0; l<10;l++){
 	    int lenData = numberData[l];
 
@@ -355,6 +354,28 @@ int main() {
 		method7 = method7 + "(" + to_string(numberData[l]) + "," + to_string(time6) + ")";
 		cout << "Vector: (" << numberData[l] << ","<< time6<< ")"<<endl;
 		
+		t0=clock();
+		countSort1(sirala,lenData);
+		t1 = clock();
+		 
+		double time7 = (double(t1-t0)/CLOCKS_PER_SEC);
+		cout << "Metodo: countSort"<<endl;
+		cout << "Tiempo de ejecucion: " << time6 << endl;
+		cout << "Cantidad de datos: " << numberData[l]<<endl;
+		method8 = method8 + "(" + to_string(numberData[l]) + "," + to_string(time6) + ")";
+		cout << "Vector: (" << numberData[l] << ","<< time6<< ")"<<endl;
+		
+		t0=clock();
+		mergeSort(sirala,0,lenData-1);
+		t1 = clock();
+		 
+		double time8 = (double(t1-t0)/CLOCKS_PER_SEC);
+		cout << "Metodo: mergeSort"<<endl;
+		cout << "Tiempo de ejecucion: " << time6 << endl;
+		cout << "Cantidad de datos: " << numberData[l]<<endl;
+		method9 = method9 + "(" + to_string(numberData[l]) + "," + to_string(time6) + ")";
+		cout << "Vector: (" << numberData[l] << ","<< time6<< ")"<<endl;
+		
 	    //mergeSort(sirala,0,9);
 	    //quickSort(sirala, 0, 9);
 	    //heapSort(sirala, 10);
@@ -368,45 +389,8 @@ int main() {
 	cout << '5: ' << method5<< endl;
 	cout << '6: ' << method6<< endl;
 	cout << '7: ' << method7<< endl;
-    /*int lenData = 0;
-    cout << "Numero de datos: " << endl;
-    cin >> lenData;
-    srand(time(NULL));
-	int sirala [lenData];
-
-    for (int fila = 0; fila < lenData; fila++)
-    {
-        sirala[fila] = rand() % 101;
-
-    }
-
-    Print Dummy Array!
-    for (int k = 0; k < lenData; ++k) {
-        cout << sirala[k] << " ";
-    }
-    cout << "\n";
-
-
-	
-	t0=clock();
-	selectionSort(sirala,lenData);
-	t1 = clock();
-	 
-	double time = (double(t1-t0)/CLOCKS_PER_SEC);
-	cout << "Tiempo de ejecucion: " << time << endl;*/
-
-
-    //Sort Functions:
-    //selectionSort(sirala,lenData);
-    //insertionSort(sirala,lenData);
-    //bubbleSort(sirala,lenData);
-    //shellSort(sirala,lenData);
-    //mergeSort(sirala,0,lenData-1);
-    //quickSort(sirala, 0, lenData-1);
-    //heapSort(sirala, lenData);
-    //bucketSort(sirala,lenData);
-    
-    //Return 0 :)
+	cout << '8: ' << method8<< endl;
+	cout << '9: ' << method9<< endl;
     return 0;
 }
 

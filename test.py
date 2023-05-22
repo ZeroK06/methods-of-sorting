@@ -6,6 +6,8 @@ from src import bubbleSort
 from src import quickSort
 from src import heapSort
 from src import shellSort
+from src import countingSort
+from src import mergeSort
 from services import randomArr
 from time import time
 from random import randint
@@ -25,7 +27,7 @@ colors = ["black", "blue", "brown", "green", "magenta",
 generateArrTxt.generateTxt()
 
 resultMethods = json.loads(
-    '[{"name": "bubbleSort","res":[] },{"name": "buckertSort","res":[] },{"name": "heapSort","res":[] },{"name": "insertSort","res":[] },{"name": "quickSort","res":[] },{"name": "selectionSort","res":[] },{"name": "shellSort","res":[] }]')
+    '[{"name": "bubbleSort","res":[] },{"name": "buckertSort","res":[] },{"name": "heapSort","res":[] },{"name": "insertSort","res":[] },{"name": "quickSort","res":[] },{"name": "selectionSort","res":[] },{"name": "shellSort","res":[] },{"name": "countingSort","res":[] },{"name": "mergeSort","res":[] }]')
 res = []
 for path in os.listdir('data'):
     if os.path.isfile(os.path.join('data', path)):
@@ -113,4 +115,4 @@ def test(*methods, numData=1):
 
 
 print(test(bubbleSort, buckertSort, heapSort, insertionSort, quickSort, selectionSort,
-      shellSort, numData=500))
+      shellSort, countingSort, mergeSort, numData=500))
