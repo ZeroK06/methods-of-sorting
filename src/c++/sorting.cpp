@@ -220,8 +220,8 @@ void BucketSort(int* data, int count) {
 	}
 }
 void countSort1(int array[], int size) {
-  int output[10];
-  int count[10];
+  int output[size];
+  int count[size];
   int max = array[0];
   for (int i = 1; i < size; i++) {
     if (array[i] > max)
@@ -360,10 +360,10 @@ int main() {
 		 
 		double time7 = (double(t1-t0)/CLOCKS_PER_SEC);
 		cout << "Metodo: countSort"<<endl;
-		cout << "Tiempo de ejecucion: " << time6 << endl;
+		cout << "Tiempo de ejecucion: " << time7 << endl;
 		cout << "Cantidad de datos: " << numberData[l]<<endl;
-		method8 = method8 + "(" + to_string(numberData[l]) + "," + to_string(time6) + ")";
-		cout << "Vector: (" << numberData[l] << ","<< time6<< ")"<<endl;
+		method8 = method8 + "(" + to_string(numberData[l]) + "," + to_string(time7) + ")";
+		cout << "Vector: (" << numberData[l] << ","<< time7<< ")"<<endl;
 		
 		t0=clock();
 		mergeSort(sirala,0,lenData-1);
@@ -371,10 +371,10 @@ int main() {
 		 
 		double time8 = (double(t1-t0)/CLOCKS_PER_SEC);
 		cout << "Metodo: mergeSort"<<endl;
-		cout << "Tiempo de ejecucion: " << time6 << endl;
+		cout << "Tiempo de ejecucion: " << time8 << endl;
 		cout << "Cantidad de datos: " << numberData[l]<<endl;
-		method9 = method9 + "(" + to_string(numberData[l]) + "," + to_string(time6) + ")";
-		cout << "Vector: (" << numberData[l] << ","<< time6<< ")"<<endl;
+		method9 = method9 + "(" + to_string(numberData[l]) + "," + to_string(time8) + ")";
+		cout << "Vector: (" << numberData[l] << ","<< time8<< ")"<<endl;
 		
 	    //mergeSort(sirala,0,9);
 	    //quickSort(sirala, 0, 9);
